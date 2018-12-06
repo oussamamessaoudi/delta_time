@@ -46,8 +46,8 @@ export default class DeltaForm extends Component{
     onValid = (event) => {
         const {valueFrom, valueTo} = this.state;
         let  dateFrom, dateTo;
-        if (dateFrom = this.getDate(valueFrom.value)){
-            if (dateTo = this.getDate(valueTo.value)){
+        if ((dateFrom = this.getDate(valueFrom.value)) !== null){
+            if ((dateTo = this.getDate(valueTo.value)) !== null){
                 this.setState({valueFrom : {...valueFrom, isValid : true, parsed : dateFrom}, valueTo : {...valueTo, isValid : true, parsed : dateTo}});
             }
             else{
@@ -56,7 +56,7 @@ export default class DeltaForm extends Component{
 
         }
         else {
-            if(dateTo = this.getDate(valueTo.value))
+            if((dateTo = this.getDate(valueTo.value)) !== null)
                 this.setState({valueFrom : {...valueFrom, isValid : false}, valueTo : {...valueTo, isValid : true, parsed : dateTo}});
             else
                 this.setState({valueFrom : {...valueFrom, isValid : false}, valueTo : {...valueTo, isValid : false}});
