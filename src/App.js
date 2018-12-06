@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import DeltaForm from "./container/DeltaForm";
+import DeltaFormProvider from "./container/DeltaFormProvider";
 
 class App extends Component {
   render() {
     return (
-        <DeltaForm/>
+        <DeltaFormProvider/>
     );
   }
 }
