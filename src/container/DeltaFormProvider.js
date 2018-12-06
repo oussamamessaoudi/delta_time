@@ -13,7 +13,7 @@ export default class DeltaFormProvider extends Component{
     }
 
     static SEPARATE_DATE = "/";
-    static PATTERN_DATE = /^\d{2}\/\d{2}\/\d{4}$/;
+    static PATTERN_DATE = new RegExp(`^\\d{2}${DeltaFormProvider.SEPARATE_DATE}\\d{2}${DeltaFormProvider.SEPARATE_DATE}\\d{4}$`);
     getDate = (dateString) => {
         if(!DeltaFormProvider.PATTERN_DATE.test(dateString))
             return null;
