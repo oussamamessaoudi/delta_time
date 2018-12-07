@@ -47,25 +47,23 @@ export default class DeltaFormProvider extends Component{
 
     onValid = () => {
         const {from, to} = this.state;
+        if (from.isValid && to.isValid) return;
         let  dateFrom, dateTo;
-        if ((dateFrom = this.getDate(from.value)) !== null){
-            if ((dateTo = this.getDate(to.value)) !== null){
-                this.setState({
-                        from    : {...from, isValid : true},
-                        to      : {...to, isValid : true},
-                        result  : this.calculate(dateFrom,  dateTo)
-                });
-            }
-            else{
-                this.setState({from : {...from, isValid : true}, to : {...to, isValid : false}, result: undefined});
-            }
-
+        const isValidFrom = (dateFrom = this.getDate(from.value)) !== null;
+        const isValidTo = (dateTo = this.getDate(to.value)) !== null;
+        if (isValidFrom && isValidTo){
+            this.setState({
+                from    : {...from, isValid : true},
+                to      : {...to, isValid : true},
+                result  : this.calculate(dateFrom,  dateTo)
+            });
         }
         else {
-            if(this.getDate(to.value) !== null)
-                this.setState({from : {...from, isValid : false}, to : {...to, isValid : true}, result: undefined});
-            else
-                this.setState({from : {...from, isValid : false}, to : {...to, isValid : false}, result: undefined});
+            this.setState({
+                from    : {...from, isValid : isValidFrom},
+                to      : {...to, isValid : isValidTo},
+                result  : undefined
+            });
         }
     };
 
