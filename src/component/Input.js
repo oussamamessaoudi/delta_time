@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 
 const ERROR_MESSAGE = 'invalid date!';
 
-const Input = ({label, isValid, value, id, onChange}) => (
+const Input = ({label, isValid, value, id, onChange=e => e}) => (
     <div>
         <label htmlFor={id} >{label}</label>
         <input value={value} name={id}  onChange={(event) => onChange(event.target.value)}/>
@@ -14,7 +14,7 @@ Input.proptypes = {
     label       : PropTypes.string,
     isValid     : PropTypes.bool,
     value       : PropTypes.string,
-    id          : PropTypes.string,
+    id          : PropTypes.string.isRequired,
     onChange    : PropTypes.func
 };
 export default Input;
