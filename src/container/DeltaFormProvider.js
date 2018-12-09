@@ -36,9 +36,7 @@ export default class DeltaFormProvider extends Component{
         if (day > 0 && day <= monthLength[month - 1]){
             return new Date(year, month-1, day);
         }
-        else {
-            return null;
-        }
+        return null;
     };
 
     onChange = (key) => (date) => {
