@@ -24,7 +24,7 @@ export default class DeltaFormProvider extends Component{
 
         // Check the ranges of month and year
         if(year < 0 || month === 0 || month > 12)
-            return false;
+            return null;
 
         const monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
 
